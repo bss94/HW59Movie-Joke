@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import {Movie} from '../../../types';
 
 
-interface Props{
-  addToList:(movie:Movie)=>void
+interface Props {
+  addToList: (movie: Movie) => void;
 }
+
 const initialState = {
-  name:'',
-  id:'',
-}
-const MovieForm:React.FC<Props> = ({addToList}) => {
-  const [newMovie,setNewMovie]=useState<Movie>(initialState)
+  name: '',
+  id: '',
+};
+const MovieForm: React.FC<Props> = ({addToList}) => {
+  const [newMovie, setNewMovie] = useState<Movie>(initialState);
 
   const changeMovie = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -26,12 +27,11 @@ const MovieForm:React.FC<Props> = ({addToList}) => {
 
     addToList({
       ...newMovie,
-      id: (Math.random()*1000).toString()
+      id: (Math.random() * 1000).toString()
     });
 
     setNewMovie(initialState);
   };
-
 
   return (
     <form className="row" onSubmit={onFormSubmit}>

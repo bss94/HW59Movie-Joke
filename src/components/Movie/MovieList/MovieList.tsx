@@ -4,24 +4,26 @@ import {Movie} from '../../../types';
 
 interface Props {
   movies: Movie[];
-  edit:(movie:Movie)=>void
-  remove:(id:string)=>void
+  edit: (movie: Movie) => void;
+  remove: (id: string) => void;
 }
 
 const MovieList: React.FC<Props> = ({
-  movies,edit,remove
+  movies,
+  edit,
+  remove
 }) => {
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(`[movieList] render`);
-  })
+  });
 
   return (
     <div className="mt-3">
       <h4>To watch List</h4>
       {
-        movies.map((movie)=>{
-          return <MovieItem movie={movie} editItem={edit} removeItem={()=>remove(movie.id)} key={movie.id}/>
+        movies.map((movie) => {
+          return <MovieItem movie={movie} editItem={edit} removeItem={() => remove(movie.id)} key={movie.id}/>;
         })
       }
 
