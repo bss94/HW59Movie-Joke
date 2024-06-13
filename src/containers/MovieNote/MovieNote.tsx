@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import MovieForm from '../../components/Movie/MovieForm/MovieForm';
 import MovieList from '../../components/Movie/MovieList/MovieList';
 import {Movie} from '../../types';
@@ -9,6 +9,10 @@ const MovieNote = () => {
     {name:'Aladdin',id:'02'},
     {name:'Armageddon',id:'03'},
   ]);
+
+  useEffect(()=>{
+    console.log(`[movieNote] render`);
+  })
 
   const addMovie = (movie:Movie) => {
     setMovies(prev => [...prev,movie])
@@ -23,19 +27,17 @@ const MovieNote = () => {
       })
     })
   }
-  const removeMovie = (movie:Movie) => {
+  const removeMovie = (id:string) => {
     setMovies(prev => {
-     return prev.filter(el=>el.id!==movie.id)
+     return prev.filter(el=>el.id!==id)
     })
   }
-  console.log(movies);
+
+
   return (
     <div>
-
       <MovieForm addToList={addMovie}/>
-
-      <MovieList/>
-
+      <MovieList movies={movies} edit={editMovie} remove={removeMovie}/>
     </div>
   );
 };

@@ -34,23 +34,29 @@ const MovieForm:React.FC<Props> = ({addToList}) => {
 
 
   return (
-    <form onSubmit={onFormSubmit}>
-      <h4>Add new dish</h4>
-      <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          required
-          className="form-control"
-          onChange={changeMovie}
-          value={newMovie.name}
-        />
+    <form className="row" onSubmit={onFormSubmit}>
+      <h4>Add new Movie</h4>
+      <div className="col-10">
+        <div className="form-group">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            className="form-control"
+            onChange={changeMovie}
+            placeholder={'Enter new Movie title'}
+            value={newMovie.name}
+          />
+        </div>
       </div>
-      <button type="submit" className="btn btn-primary mt-2">
-        Create
-      </button>
+
+      <div className="col-2">
+        <button type="submit" className="btn btn-primary">
+          Create
+        </button>
+      </div>
+
     </form>
   );
 };
