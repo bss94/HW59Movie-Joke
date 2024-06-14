@@ -1,12 +1,16 @@
 import React from 'react';
 
-interface Props{
-
+interface Props {
+  joke: string;
 }
-const JokeItem:React.FC<Props> = () => {
+
+const JokeItem: React.FC<Props> = ({joke}) => {
   return (
-    <div>
-      JokeItem
+    <div className="card mt-3">
+      <div className="card-body">
+        <h5 className="card-title">Joke</h5>
+        <p className="card-text">{joke}</p>
+      </div>
     </div>
   );
 };

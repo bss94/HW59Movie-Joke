@@ -1,14 +1,19 @@
 import React from 'react';
 import JokeItem from '../JokeItem/JokeItem';
+import {jokeState} from '../../../types';
 
-interface Props{
-
+interface Props {
+  jokes: jokeState[];
 }
-const JokeList:React.FC<Props> = () => {
+
+const JokeList: React.FC<Props> = ({jokes}) => {
   return (
     <div>
-      JokeList
-      <JokeItem/>
+      {
+        jokes.map((el) => {
+          return <JokeItem joke={el.joke} key={el.id}/>;
+        })
+      }
     </div>
   );
 };
